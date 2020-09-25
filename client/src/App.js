@@ -6,7 +6,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api")
+      .get("/api")
       .then((response) => {
         console.log(response.data, "clienttttt");
         setUser(response.data);

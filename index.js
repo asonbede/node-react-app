@@ -15,7 +15,7 @@ app.get("/api", (req, res) => {
       res.json({ user: response.data });
     })
     .catch((error) => {
-      console.log("error occured");
+      console.log("error occuredddddd");
     });
 });
 
