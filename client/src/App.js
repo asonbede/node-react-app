@@ -36,15 +36,14 @@ const App = () => {
   };
 
   return (
-    user && (
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input value={searchStr} onChange={handleChange} />
-          <button type="submit">submit </button>
-        </form>
-        <p>{JSON.stringify(user)}</p>
-      </div>
-    )
+    <div>
+      <p>Type your search queries</p>
+      <form onSubmit={handleSubmit}>
+        <input value={searchStr} onChange={handleChange} />
+        <button type="submit">submit </button>
+      </form>
+      <p>{JSON.stringify(user)}</p>
+    </div>
   );
 };
 export default App;
