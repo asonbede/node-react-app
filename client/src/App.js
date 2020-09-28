@@ -30,10 +30,10 @@ const App = () => {
         console.log(response.data, "clienttttt");
         console.log(typeof response.data, "clienttttt222222");
         setCountry(response.data[0]);
+      })
+      .catch((error) => {
+        console.log("error occured");
       });
-    // .catch((error) => {
-    //   console.log("error occured");
-    // });
   };
   if (country) {
     return (
