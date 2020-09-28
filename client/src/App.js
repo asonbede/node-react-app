@@ -25,7 +25,7 @@ const App = () => {
     event.preventDefault();
 
     axios
-      .get(`http://localhost:4001/api?user=${searchStr}`)
+      .get(`/api?user=${searchStr}`)
       .then((response) => {
         console.log(response.data, "clienttttt");
         console.log(typeof response.data, "clienttttt222222");
