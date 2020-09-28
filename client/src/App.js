@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 const App = () => {
-  const [user, setUser] = useState(null);
-  const [searchStr, setsearchStr] = useState("asonbede");
+  const [country, setCountry] = useState(null);
+  const [searchStr, setsearchStr] = useState("");
 
   // useEffect(() => {
   //   axios
@@ -25,25 +25,47 @@ const App = () => {
     event.preventDefault();
 
     axios
-      .get(`/api?user=${searchStr}`)
+      .get(`http://localhost:4001/api?user=${searchStr}`)
       .then((response) => {
         console.log(response.data, "clienttttt");
-        setUser(response.data);
-      })
-      .catch((error) => {
-        console.log("error occured");
+        console.log(typeof response.data, "clienttttt222222");
+        setCountry(response.data[0]);
       });
+    // .catch((error) => {
+    //   console.log("error occured");
+    // });
   };
-
-  return (
-    <div>
-      <p>Type your search queries</p>
-      <form onSubmit={handleSubmit}>
-        <input value={searchStr} onChange={handleChange} />
-        <button type="submit">submit </button>
-      </form>
-      <p>{JSON.stringify(user)}</p>
-    </div>
-  );
+  if (country) {
+    return (
+      <div>
+        <p>Input country Name to get its details</p>
+        <form onSubmit={handleSubmit}>
+          <input value={searchStr} onChange={handleChange} />
+          <button type="submit">submit </button>
+        </form>
+        <p>Country Name: {country.name}</p>
+        <p>Country capital: {country.capital}</p>
+        <p> Country Region: {country.region} </p>
+        <p> Country subregion: {country.subregion} </p>
+        <p> Country population: {country.population} </p>
+        <ul>
+          Languages:
+          {country.languages.map((language, index) => (
+            <li key={index}>{language.name} </li>
+          ))}
+        </ul>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>Input country Name to get its details</p>
+        <form onSubmit={handleSubmit}>
+          <input value={searchStr} onChange={handleChange} />
+          <button type="submit">submit </button>
+        </form>
+      </div>
+    );
+  }
 };
 export default App;

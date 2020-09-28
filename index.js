@@ -7,12 +7,13 @@ app.use(cors());
 
 //create route
 app.get("/api", (req, res) => {
-  const user = req.query.user || "asonbede";
+  const user = req.query.user || "nigeria";
   axios
-    .get(`https://api.github.com/users/${user}`)
+    .get(`https://restcountries.eu/rest/v2/name/${user}`) //https://restcountries.eu/rest/v2/name/nigeria //https://api.github.com/users/${user}
     .then((response) => {
       console.log(typeof response.data);
-      res.json({ user: response.data });
+      console.log(user, "stringgggg");
+      res.json(response.data);
     })
     .catch((error) => {
       console.log("error occuredddddd");
